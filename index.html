@@ -1,0 +1,154 @@
+<!doctype html>
+<html>
+<h1>Amicable Numbers</h1>
+<head>
+	<meta charset="utf-8/">
+	<title> Amicable Numbers</title>
+</head>
+
+<body>
+
+	<form>
+		<!-- User input -->
+		Number 1: <br /> 
+		<input type="text" id="number1"/> 
+		<br />
+		Number 2: <br />
+		<input type="text" id="number2"/>
+		<br />
+
+	</form>
+	<!-- IDs and command -->
+	<button onclick="runProgram()">Submit</button>
+	<div id = "userNumber1" > Number1: </div><br />
+	<div id = "userNumber2" > Number2: </div><br />
+	<div id = "factors1" > </div>
+	<div id = "factors2" >  </div>
+	<div id = "sum" > </div>
+	<div id = "answer" > Amicable or not amicable? </div><br />
+	<div id = "factors2" > </div>
+
+	<script>
+	function runProgram(){
+		//Testing for isFactor
+		// isFactor_test(1, 2);
+		// isFactor_test(1, 1);
+		// isFactor_test(12, 6);
+
+		// //Testing for showFactors
+		// arr = [1, 4, 123, 4, 9];
+		// showFactors(arr);
+
+		// //Testing for addFactors
+		// arr = [1, 2, 100, 4];
+		// addFactors(arr);
+
+		// //Testing for getFactors
+		// getFactors(6);
+
+
+		var num1 = document.getElementById("number1").value;
+		var num2 = document.getElementById("number2").value;
+		printNums();
+
+		// //var factors1 = new Array();
+		// for (i = 0; i <= num1; i++){
+		// 	if(isFactor(num1, i) == true){
+		// 		document.getElementById("factors1").innerHTML += i+"&nbsp;"
+		// 	}
+		// }
+		
+
+		// //var factors2 = new Array();
+		// for (i = 0; i <= num2; i++){
+		// 	if(isFactor(num2, i) == true){
+		// 		document.getElementById("factors2").innerHTML += i +"&nbsp;"
+		// 	}
+		// }
+
+		// {
+
+			n1 = num1;
+			n2 = num2;
+			n1 = parseInt(n1);
+			n2 = parseInt(n2);
+
+			n1_factors = getFactors(n1);
+			n2_factors = getFactors(n2);
+
+			n1_sum = addFactors(n1_factors);
+			n2_sum = addFactors(n2_factors);
+
+			if(n1_sum == n2 && n2_sum == n1){
+				document.getElementById("answer").innerHTML = "Amicable";
+			}
+			else document.getElementById("answer").innerHTML = "Not amicable";
+
+		}
+		
+	
+
+
+	function printNums(){
+		var num1 = document.getElementById("number1").value;
+		var num2 = document.getElementById("number2").value;
+		document.getElementById("userNumber1").innerHTML += num1 +"&nbsp;";
+		document.getElementById("userNumber2").innerHTML += num2 +"&nbsp;";
+	}
+
+	function isFactor(number, test_number){
+		if(number%test_number == 0) return true;
+		else{
+			return false;
+		} 
+	}
+	//test isFactor
+	function isFactor_test(testNum1, testNum2){
+		if(isFactor(testNum1, testNum2)){
+			alert("Amicable");
+		}
+		else{
+			alert("Not Amicable");
+		} 
+	}
+
+	function showFactors(array){
+		for (i = 0; i < array.length; i++){
+			document.getElementById("factors").innerHTML += array[i] +"&nbsp;";
+		}
+	}
+
+	function addFactors(array){
+		var sum = 0;
+		for (i = 0; i < array.length; i++)
+		{
+			parseInt(array[i]);
+			 sum += array[i]; 
+		}
+		return sum;
+		//document.getElementById("sum").innerHTML = sum + "&nbsp;";
+	}
+
+	function getFactors(num){
+		parseInt(num);
+		var factors = [1]; 
+		for (i = 2; i <= num; i++)
+		{
+			if(num % i == 0)
+			{
+				factors.push(i);
+			}
+
+			else{
+				continue;
+			}
+		}
+		//addFactors(factors);
+		return factors;
+
+	}
+
+	</script>
+
+</body> 
+</html>
